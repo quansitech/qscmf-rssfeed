@@ -36,6 +36,7 @@ class RssfeedController extends Controller{
             }
         }
 
+
         $items = collect($items)->sortByDesc(function($product){
             return $product['timestamp'];
         })->values()->all();
@@ -46,6 +47,7 @@ class RssfeedController extends Controller{
         $meta['description'] = '';
         $meta['language'] = '';
         $meta['updated'] = $items ? $items[0]['updated'] : '';
+
         $this->assign('items', $items);
         $this->assign('meta', $meta);
 
